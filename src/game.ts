@@ -18,10 +18,9 @@
 class Game {
     parser : Parser;
     out : Printer;
-
     currentRoom : Room;
-
     isOn : boolean;
+    npc : Npc;
 
     /**
      * Create the game and initialise its internal map.
@@ -32,6 +31,7 @@ class Game {
         this.isOn = true;
         this.createRooms();
         this.printWelcome();
+        this.createNpcs();
     }
 
     /**
@@ -57,8 +57,6 @@ class Game {
         let mcBonalds = new Room("at the McBonald's, it sucks here.");
         let alley = new Room("in the alley behind the McBonald's, there are only a few homeless here.");
 
-
-
         // initialise room exits
         bedroom.setExits(null, hallway, null, null);
         hallway.setExits(attic, bathroom, livingRoom, bedroom);
@@ -78,8 +76,40 @@ class Game {
         mcBonalds.setExits(null, alley, null, car);
         alley.setExits(null, null, null, mcBonalds);
 
-        // spawn player in bedroom
+           // spawn player in bedroom
         this.currentRoom = bedroom;
+    }
+
+    /**
+    * Create all the npcs and give them a location.
+    */
+   createNpcs() : void {
+        // create the npcs
+        let spider = new Npc("Jim the Spider");
+        let wife = new Npc("My crazy fucking wife");
+        let sanchez = new Npc("R. Sanchez");
+        let dog = new Npc("Droopy the dog");
+        let dinkleberg = new Npc("Dinkleberg");
+        let mrsDinkleberg = new Npc("Mrs. Dinkleberg");
+        let schnolan = new Npc("Schnolan Schnorth");
+        let hobo = new Npc("Tyrone Biggums");
+        let rocco = new Npc("Rocco the Rock 'n Roll Clown");
+        let steven = new Npc("Steven");
+
+
+        // intialise npcs in rooms
+
+        spider.setLocation(attic);
+        wife.setLocation(kitchen);
+        sanchez.setLocation(secretLab);
+        dog.setLocation(outside);
+        dinkleberg.setLocation(neighbourLawn);
+        mrsDinkleberg.setLocation(neighbourBedroom);
+        schnolan.setLocation(gunStore);
+        hobo.setLocation(homelessShelter);
+        rocco.setLocation(mcBonalds);
+        steven.setLocation(alley);
+
     }
 
     /**
@@ -89,7 +119,7 @@ class Game {
         this.out.println();
         this.out.println("Rise and shine fuckhead.");
         this.out.println("Time to fuck some shit up.");
-        this.out.println("Type 'help' if you need help.");
+        this.out.println("Type 'help' for a list of commands you can use.");
         this.out.println();
         this.out.println("You are " + this.currentRoom.description);
         this.out.print("Exits: ");
@@ -127,7 +157,7 @@ class Game {
         this.out.println("I don't know what you mean...");
         this.out.println();
         this.out.println("Your command words are:");
-        this.out.println("   go quit help");
+        this.out.println("look go quit help");
         return false;
     }
 
@@ -144,11 +174,13 @@ class Game {
             this.out.println("Help what?");
             return false;
         }
-        this.out.println("You are lost. You are alone. You wander");
-        this.out.println("around at the university.");
+        this.out.println("Let me help you out, shitlord.");
         this.out.println();
         this.out.println("Your command words are:");
-        this.out.println("   go quit help");
+        this.out.println("'go' you can use this to move about.");
+        this.out.println("'quit', if you want to quit the game.");
+        this.out.println("'help', list all of your command words.");
+        this.out.println("'look', regain your bearings.");
         return false;
     }
 
@@ -224,5 +256,11 @@ class Game {
         else {
             return true;  // signal that we want to quit
         }
+    }
+
+    printDescription(params : string[]) : boolean {
+
+            this.out.println("You look around. you are " + this.currentRoom.description);
+            return false;
     }
 }
