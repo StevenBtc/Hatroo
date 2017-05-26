@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>Hatroo</title>
+		<meta name="description" content="Hatroo">
+		<meta name="author" content="steven">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <!-- Insert Bootstrap styles from CDN -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" 
+                integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <style type="text/css">
+
+            h1 {
+            overflow: hidden; /* Ensures the content is not revealed until the animation */
+            border-right: .15em solid maroon; /* The typwriter cursor */
+            white-space: nowrap; /* Keeps the content on a single line */
+            margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+            letter-spacing: .15em; /* Adjust as needed */
+            animation: 
+                typing 1.5s steps(10, end),
+                blink-caret 1s step-end infinite;
+            }
+
+            /* The typing effect */
+            @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+            }
+
+            /* The typewriter cursor effect */
+            @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: maroon; }
+            }
+
+            .console {
+                font-family: Courier New, Courier, monospace;
+                background-color: black;
+                color: red;
+                font-family: 
+                color: red;
+                height: 500px;
+                overflow-y:scroll;
+                margin-right: 10%;
+                margin-left: 10%;
+                border-style: solid, black;
+            }
+
+            .panel-footer {
+                margin-right: 10%;
+                margin-left: 10%;   
+                font-family: Courier New, Courier, monospace;
+                background-color: black;
+                border: black;
+                                
+            }
+
+            html, body{
+                
+    background: black; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(black,maroon); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(black, maroon); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(black, maroon); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(black, maroon); /* Standard syntax */
+            }
+
+           h1 {
+               color: red;
+        font-family: Courier New, Courier, monospace;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        text-align: center;  
+}
+
+#command {
+       font-family: Courier New, Courier, monospace;
+                background-image: -webkit-linear-gradient(top, black, #3c0000);
+                background-image: -moz-linear-gradient(top, black, #3c0000 );
+                background-image: linear-gradient(to bottom, black, #3c0000 );
+                border:black;
+                color: red;
+                border-style: solid;
+}
+
+#boundary {
+    margin-left: 43%;
+    margin-right: 43%;
+}
+
+::placeholder {
+    font-family: Courier New, Courier, monospace;
+    color: red;
+}
+        </style>
+	</head>
+
+	<body>
+        <div id="boundary">
+                <h1>Hatroo</h1>
+                </div>
+        
+                <div id="game_console" class="panel-body console">
+                </div>
+                <div class="panel-footer">
+                    <input id="command" type="text" class="form-control" placeholder="Yo, fuckhead" autofocus>
+                </div>
+            
+        
+
+		<script src="main.js"></script>
+        <script>
+            var game = new Game(document.getElementById("game_console"),
+                                document.getElementById("command"));
+
+        </script>
+        
+	</body>
+</html>
