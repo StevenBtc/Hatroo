@@ -1,22 +1,17 @@
-class npc {
-    name : string;
+class npc extends class player{
     description : string;
 
     /*
-    * Constructor for objects of class Item
+    * Constructor for objects of class npc
     */
 
     constructor() {
         // initialise instance variables
-        this.name = name;
-        this.description = this.description;
+        this.description = description;
     }
 
-    getName() : string {
-        return name;
+    getDescription() : string {
+        return description;
     }
 
-     getDescription() : string {
-        return this.description;
-    }
 }

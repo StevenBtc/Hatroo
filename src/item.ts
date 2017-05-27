@@ -1,4 +1,4 @@
-class Item {
+class Items {
     name : string;
     description : string;
 
