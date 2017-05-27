@@ -1,4 +1,4 @@
-class npc {
+class Item {
     name : string;
     description : string;
 
@@ -16,7 +16,7 @@ class npc {
         return name;
     }
 
-     getDescription() : string {
+    getDescription() : string {
         return this.description;
     }
 }

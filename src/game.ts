@@ -20,7 +20,6 @@ class Game {
     out : Printer;
     currentRoom : Room;
     isOn : boolean;
-    npc : Npc;
 
     /**
      * Create the game and initialise its internal map.
@@ -31,7 +30,6 @@ class Game {
         this.isOn = true;
         this.createRooms();
         this.printWelcome();
-        this.createNpcs();
     }
 
     /**
@@ -81,38 +79,6 @@ class Game {
     }
 
     /**
-    * Create all the npcs and give them a location.
-    */
-   createNpcs() : void {
-        // create the npcs
-        let spider = new Npc("Jim the Spider");
-        let wife = new Npc("My crazy fucking wife");
-        let sanchez = new Npc("R. Sanchez");
-        let dog = new Npc("Droopy the dog");
-        let dinkleberg = new Npc("Dinkleberg");
-        let mrsDinkleberg = new Npc("Mrs. Dinkleberg");
-        let schnolan = new Npc("Schnolan Schnorth");
-        let hobo = new Npc("Tyrone Biggums");
-        let rocco = new Npc("Rocco the Rock 'n Roll Clown");
-        let steven = new Npc("Steven");
-
-
-        // intialise npcs in rooms
-
-        spider.setLocation(attic);
-        wife.setLocation(kitchen);
-        sanchez.setLocation(secretLab);
-        dog.setLocation(outside);
-        dinkleberg.setLocation(neighbourLawn);
-        mrsDinkleberg.setLocation(neighbourBedroom);
-        schnolan.setLocation(gunStore);
-        hobo.setLocation(homelessShelter);
-        rocco.setLocation(mcBonalds);
-        steven.setLocation(alley);
-
-    }
-
-    /**
      * Print out the opening message for the player.
      */
     printWelcome() : void {
@@ -157,7 +123,7 @@ class Game {
         this.out.println("I don't know what you mean...");
         this.out.println();
         this.out.println("Your command words are:");
-        this.out.println("look go quit help");
+        this.out.println("look go quit help hatroo");
         return false;
     }
 
@@ -181,6 +147,7 @@ class Game {
         this.out.println("'quit', if you want to quit the game.");
         this.out.println("'help', list all of your command words.");
         this.out.println("'look', regain your bearings.");
+        this.out.println("'hatroo'");
         return false;
     }
 
@@ -263,4 +230,24 @@ class Game {
             this.out.println("You look around. you are " + this.currentRoom.description);
             return false;
     }
+
+    printHatroo(params : string[]) : boolean {
+
+            this.out.println("Bless you!");
+            return false;
+    }
+
+    printCleanUp(params : string[]) : boolean {
+
+            this.out.println("lol nah");
+            return false;
+    }
+
+    printBitcoin(params : string[]) : boolean {
+
+            this.out.println("Fuck yeah.");
+            return false;
+    }
+
+    
 }

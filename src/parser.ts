@@ -27,7 +27,7 @@ class Parser {
         this.input = input;
         input.onkeyup = (e) => { // event handler function
             if (e.keyCode == 13 && this.game.isOn) {
-                // Invoke parse method wehen user pressed enter
+                // Invoke parse method when user pressed enter
                 let command = this.input.value;
                 this.game.out.println(command);
                 this.parse(command.split(" "));
@@ -61,6 +61,15 @@ class Parser {
                 break;
             case "look" : 
                 wantToQuit = this.game.printDescription(params);
+                break;
+            case "hatroo" : 
+                wantToQuit = this.game.printHatroo(params);
+                break;
+            case "clean" : 
+                wantToQuit = this.game.printCleanUp(params);
+                break;
+            case "bitcoin" : 
+                wantToQuit = this.game.printBitcoin(params);
                 break;
                 
             default :
