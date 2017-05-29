@@ -20,6 +20,8 @@ class Game {
     out : Printer;
     currentRoom : Room;
     isOn : boolean;
+    item : Item;
+    inventory : any;
 
     /**
      * Create the game and initialise its internal map.
@@ -30,6 +32,7 @@ class Game {
         this.isOn = true;
         this.createRooms();
         this.printWelcome();
+        this.inventory = new Array;
     }
 
     /**
@@ -37,8 +40,8 @@ class Game {
      */
     createRooms() : void {
         // create the rooms
-        let bedroom = new Room("in your bedroom, it's a fucking mess.");
-        let hallway = new Room("in the hallway, pictures of your faggy family adorn the walls.");
+        let bedroom = new Room("in your bedroom, it's a mess.");
+        let hallway = new Room("in the hallway, pictures of your family adorn the walls.");
         let attic = new Room("in the attic, it smells like spiders in here.");
         let bathroom = new Room("in the bathroom, a huge turd has fallen out of the toilet.");
         let livingRoom = new Room("in the living room, dr. Phil's new show about pimping cars is on.");
@@ -74,8 +77,13 @@ class Game {
         mcBonalds.setExits(null, alley, null, car);
         alley.setExits(null, null, null, mcBonalds);
 
-           // spawn player in bedroom
+        // spawn player in bedroom
         this.currentRoom = bedroom;
+
+        //test inv
+       // this.inventory.push('Computer');
+
+       
     }
 
     /**
@@ -83,8 +91,8 @@ class Game {
      */
     printWelcome() : void {
         this.out.println();
-        this.out.println("Rise and shine fuckhead.");
-        this.out.println("Time to fuck some shit up.");
+        this.out.println("Rise and shine!");
+        this.out.println("You have to kill everyone.");
         this.out.println("Type 'help' for a list of commands you can use.");
         this.out.println();
         this.out.println("You are " + this.currentRoom.description);
@@ -123,7 +131,7 @@ class Game {
         this.out.println("I don't know what you mean...");
         this.out.println();
         this.out.println("Your command words are:");
-        this.out.println("look go quit help hatroo");
+        this.out.println("look go quit help hatroo inventory");
         return false;
     }
 
@@ -147,6 +155,7 @@ class Game {
         this.out.println("'quit', if you want to quit the game.");
         this.out.println("'help', list all of your command words.");
         this.out.println("'look', regain your bearings.");
+        this.out.println("'inventory', check your inventory.");
         this.out.println("'hatroo'");
         return false;
     }
@@ -249,5 +258,17 @@ class Game {
             return false;
     }
 
+     printInventory(params : string[]) : boolean {
+
+        let output : string =  "";
+            for (let i = 0; i < this.inventory; i++) {
+            output += this.inventory.get(i).getDescription() + " ";
+            return false;
+        }
+        this.out.println("You are carrying:");
+        this.out.println(output);
+            
+        } 
     
 }
+    

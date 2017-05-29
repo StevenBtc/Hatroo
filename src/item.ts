@@ -1,19 +1,12 @@
-class Items {
-    name : string;
+class Item {
     description : string;
 
     /*
     * Constructor for objects of class Item
     */
-
-    constructor() {
+    constructor(newdescription : string) {
         // initialise instance variables
-        this.name = name;
-        this.description = this.description;
-    }
-
-    getName() : string {
-        return name;
+        this.description = newdescription;
     }
 
     getDescription() : string {

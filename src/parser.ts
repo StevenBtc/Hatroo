@@ -71,6 +71,9 @@ class Parser {
             case "bitcoin" : 
                 wantToQuit = this.game.printBitcoin(params);
                 break;
+            case "inventory" : 
+                wantToQuit = this.game.printInventory(params);
+                break;
                 
             default :
                 // print an error when command is not known
