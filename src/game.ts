@@ -1,6 +1,6 @@
 /**
- * This class is part of the "Zorld of Wuul" application. 
- * "Zorld of Wuul" is a very simple, text based adventure game.  
+ * This class is part of the "Hatroo" application. 
+ * "Hatroo" is a very simple, text based adventure game.  
  * 
  * Users can walk around some scenery. That's all. It should really be 
  * extended to make it more interesting!
@@ -19,9 +19,9 @@ class Game {
     parser : Parser;
     out : Printer;
     currentRoom : Room;
-    isOn : boolean;
+    isOn : boolean; 
     item : Item;
-    inventory : any;
+    inventory: Array<Item> = [];
 
     /**
      * Create the game and initialise its internal map.
@@ -32,7 +32,6 @@ class Game {
         this.isOn = true;
         this.createRooms();
         this.printWelcome();
-        this.inventory = new Array;
     }
 
     /**
@@ -81,9 +80,9 @@ class Game {
         this.currentRoom = bedroom;
 
         //test inv
-       // this.inventory.push('Computer');
+        this.inventory.push(new Item('Computer'));
+        this.inventory.push(new Item('Computer1'));
 
-       
     }
 
     /**
@@ -92,7 +91,7 @@ class Game {
     printWelcome() : void {
         this.out.println();
         this.out.println("Rise and shine!");
-        this.out.println("You have to kill everyone.");
+        this.out.println("You have to kill everyone to win!");
         this.out.println("Type 'help' for a list of commands you can use.");
         this.out.println();
         this.out.println("You are " + this.currentRoom.description);
@@ -258,17 +257,21 @@ class Game {
             return false;
     }
 
-     printInventory(params : string[]) : boolean {
+     printInventory(params : Item[]) : boolean {
 
-        let output : string =  "";
-            for (let i = 0; i < this.inventory; i++) {
-            output += this.inventory.get(i).getDescription() + " ";
+            if(this.inventory.length > 0) {
+                this.out.print("You are carrying: ");
+                this.inventory.forEach(item => {
+                    this.out.print(item.description + " ");
+                });
+                this.out.println();
+            } else {
+                this.out.println("Your inventory is emtpy.");
+            }
+        
             return false;
-        }
-        this.out.println("You are carrying:");
-        this.out.println(output);
             
-        } 
+        }
     
 }
     

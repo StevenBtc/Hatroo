@@ -72,7 +72,7 @@ class Parser {
                 wantToQuit = this.game.printBitcoin(params);
                 break;
             case "inventory" : 
-                wantToQuit = this.game.printInventory(params);
+                wantToQuit = this.game.printInventory([]);
                 break;
                 
             default :
