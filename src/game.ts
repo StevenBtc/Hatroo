@@ -81,7 +81,7 @@ class Game {
 
         //test inv
         this.inventory.push(new Item('Computer'));
-        this.inventory.push(new Item('Computer1'));
+        this.inventory.push(new Item('Blikje Cola'));
 
     }
 
@@ -268,9 +268,7 @@ class Game {
             } else {
                 this.out.println("Your inventory is emtpy.");
             }
-        
             return false;
-            
         }
     
 }
