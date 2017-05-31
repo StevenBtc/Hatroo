@@ -276,13 +276,6 @@ class Game {
             return false;
         }
 
-    // printRoomItems(params : Item[]) : boolean {
-
-        
-    //     console.log(this.currentRoom.items);
-    //     return false;
-    // }
-
            //get a description of the items in a room
 
       printRoomItems(params : Item[]) : boolean {

@@ -71,25 +71,6 @@ class Room {
         this.items.push(newItem)
     }
 
-    
-    //     //get a description of the items in a room
-
-    //   getRoomItems(params : Item[]) : boolean {
-
-    //         if(this.currentRoom.items.length > 0) {
-    //                 this.out.println("You look around and see:");
-    //                 this.out.println(); 
-    //                 this.out.println();
-    //             this.currentRoom.items.forEach(items => {
-    //                 this.out.print('- ' + items.description + '\n');
-    //             });
-    //             this.out.println();
-    //         } else {
-    //             this.out.print("There is nothing here");
-    //         }
-    //         return false;
-    //     }
-   
 
 }
 
