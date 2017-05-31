@@ -80,9 +80,12 @@ class Game {
         this.currentRoom = bedroom;
 
         //test inv
-        this.inventory.push(new Item('Computer'));
-        this.inventory.push(new Item('Blikje Cola'));
+        this.inventory.push(new Item('Shotgun'));
+        this.inventory.push(new Item('Teleporter'));
 
+        //test item in room
+
+        bedroom.setItem(new Item('Computer'));
     }
 
     /**
@@ -260,16 +263,44 @@ class Game {
      printInventory(params : Item[]) : boolean {
 
             if(this.inventory.length > 0) {
-                this.out.print("You are carrying: ");
+                this.out.print("You open your backpack, it contains:");
+                this.out.println();
+                this.out.println();
                 this.inventory.forEach(item => {
-                    this.out.print(item.description + " ");
+                    this.out.println('- ' + item.getDescription() + '\n');
                 });
                 this.out.println();
             } else {
-                this.out.println("Your inventory is emtpy.");
+                this.out.println("If you stare into the backpack long enough the backpack stares back at you. Your backpack is empty.");
             }
             return false;
         }
+
+    // printRoomItems(params : Item[]) : boolean {
+
+        
+    //     console.log(this.currentRoom.items);
+    //     return false;
+    // }
+
+           //get a description of the items in a room
+
+      printRoomItems(params : Item[]) : boolean {
+
+            if(this.currentRoom.items.length > 0) {
+                    this.out.println("You look around and see:");
+                this.currentRoom.items.forEach(items => {
+                    this.out.print('- ' + items.description + '\n');
+                });
+                this.out.println();
+            } else {
+                this.out.print("There is nothing here");
+            }
+            return false;
+        }
+   
+        
+
     
 }
     

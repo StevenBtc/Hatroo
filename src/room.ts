@@ -14,6 +14,10 @@
  */
 class Room {
     description : string;
+    items: Array<Item> = [];
+
+    out : Printer;
+
 
     northExit : Room;
     southExit : Room;
@@ -29,7 +33,6 @@ class Room {
     constructor(description : string) {
         this.description = description;
     }
-
     /**
      * Define the exits of this room.  Every direction either leads
      * to another room or is null (no exit there).
@@ -53,6 +56,40 @@ class Room {
         }
     }
 
+    /*
+    *   Get items from the room
+    */ 
+
+    getItem(index : number) : Item {
+        return this.items[index];
+    }
+
+    /*
+    *   Set a particular item in the room
+    */ 
+    setItem(newItem : Item) {
+        this.items.push(newItem)
+    }
+
+    
+    //     //get a description of the items in a room
+
+    //   getRoomItems(params : Item[]) : boolean {
+
+    //         if(this.currentRoom.items.length > 0) {
+    //                 this.out.println("You look around and see:");
+    //                 this.out.println(); 
+    //                 this.out.println();
+    //             this.currentRoom.items.forEach(items => {
+    //                 this.out.print('- ' + items.description + '\n');
+    //             });
+    //             this.out.println();
+    //         } else {
+    //             this.out.print("There is nothing here");
+    //         }
+    //         return false;
+    //     }
+   
 
 }
 
