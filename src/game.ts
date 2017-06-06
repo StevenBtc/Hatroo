@@ -21,6 +21,7 @@ class Game {
     currentRoom : Room;
     isOn : boolean; 
     item : Item;
+    itemNumber : string;
     inventory: Array<Item> = [];
 
     /**
@@ -80,12 +81,13 @@ class Game {
         this.currentRoom = bedroom;
 
         //test inv
-        this.inventory.push(new Item('Shotgun'));
-        this.inventory.push(new Item('Teleporter'));
+        this.inventory.push(new Item(0, 'Shotgun'));
+      
 
         //test item in room
 
-        bedroom.setItem(new Item('Computer'));
+        bedroom.setItem(new Item(1, 'Computer'));
+
     }
 
     /**
@@ -218,6 +220,36 @@ class Game {
         }
         return false;
     }
+
+     /** 
+     * Pick up item
+     * 
+     * @param params array containing all parameters
+     * @return true, if this command quits the game, false otherwise.
+     */
+    pickUpItem(params : string[]) : boolean {
+        if(params.length === 0) {
+            // if there is no second word, we don't know what to pick up...
+            this.out.println("Get what?");
+            console.log('Missing a second word');
+            return false;
+        }
+
+    let item = this.currentRoom.findItemByItemNumberAndGrabItemDescription;
+
+        if (item === null) {
+           this.out.println("That item is not here!");
+            return false;
+        } else {
+            //not working as intended yet because it creates a new item instead of pushing existing item
+            this.inventory.push(new Item(1, 'Computer'));
+            this.currentRoom.removeItemByItemNumber;
+            this.out.println("Picked up item");
+            return false;
+        }
+    }
+
+    
     
     /** 
      * "Quit" was entered. Check the rest of the command to see
@@ -260,6 +292,8 @@ class Game {
             return false;
     }
 
+    //get description of items in inventory
+
      printInventory(params : Item[]) : boolean {
 
             if(this.inventory.length > 0) {
@@ -276,7 +310,7 @@ class Game {
             return false;
         }
 
-           //get a description of the items in a room
+           //get description of the items in a room
 
       printRoomItems(params : Item[]) : boolean {
 
@@ -284,6 +318,7 @@ class Game {
                     this.out.println("You look around and see:");
                 this.currentRoom.items.forEach(items => {
                     this.out.print('- ' + items.description + '\n');
+                    this.out.println();
                 });
                 this.out.println();
             } else {

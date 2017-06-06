@@ -15,7 +15,6 @@
 class Room {
     description : string;
     items: Array<Item> = [];
-
     out : Printer;
 
 
@@ -65,13 +64,49 @@ class Room {
     }
 
     /*
-    *   Set a particular item in the room
+    *   Get items from the room
     */ 
+
+
+     public findItemByItemNumber(itemNumber : number) : Item
+    {
+        for (let item of this.items) // iterate through all items
+        {
+            if (item.itemNumber == itemNumber) {
+                return item; // found item
+            }
+        }
+        return null; // item not found
+    }
+
+      public findItemByItemNumberAndGrabItemDescription(itemNumber : number) : string
+    {
+        for (let item of this.items) // iterate through all items
+        {
+            if (item.itemNumber == itemNumber) {
+                var n = item.description.toString();
+                return n; // found item
+            }
+        }
+        return null; // item not found
+    }
+            
+
     setItem(newItem : Item) {
         this.items.push(newItem)
     }
 
+  public removeItemByItemNumber(itemNumber : number)
+    {
+        let item = this.findItemByItemNumber(itemNumber);
+        if (item != null)
+        {
+            let indexOfItemInArray = this.items.indexOf(item); // find position of item object in items array
+            this.items.splice(indexOfItemInArray, 1); // remove from array
+        }
+    }
 
 }
 
+ 
 

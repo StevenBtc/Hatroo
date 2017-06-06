@@ -77,6 +77,9 @@ class Parser {
             case "search" :
                 wantToQuit = this.game.printRoomItems([]);
                 break;
+            case "get" :
+                wantToQuit = this.game.pickUpItem(params);
+                break;
                 
             default :
                 // print an error when command is not known

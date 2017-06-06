@@ -1,15 +1,20 @@
-class Item {
-    description : string;
+class Item
+{
+     itemNumber : number;
+     description : string;
 
-    /*
-    * Constructor for objects of class Item
-    */
-    constructor(newdescription : string) {
-        // initialise instance variables
+    constructor(newnumber : number, newdescription : string)
+    {
+        this.itemNumber = newnumber;
         this.description = newdescription;
     }
 
     getDescription() : string {
         return this.description;
+    }
+
+    getNumber() : string 
+    {
+        return this.description + " (" + this.itemNumber + ")";
     }
 }
