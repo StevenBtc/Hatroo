@@ -55,8 +55,8 @@ class Game {
         let gunStore = new Room("in the gun store, there are alot of rooty tooty point-n-shooties for sale");
         let car = new Room("in the car, whereto, guv'na?");
         let homelessShelter = new Room("at the homeless shelter, there are a fuckton of homeless people asking for change.");
-        let mcBonalds = new Room("at the McBonald's, it sucks here.");
-        let alley = new Room("in the alley behind the McBonald's, there are only a few homeless here.");
+        let airport = new Room("at the airport, you should get on a plane and leave.");
+        let alley = new Room("in the alley behind the airport, there are only a few homeless here.");
 
         // initialise room exits
         bedroom.setExits(null, hallway, null, null);
@@ -72,16 +72,16 @@ class Game {
         neighbourLivingRoom.setExits(neighbourLawn, null, neighbourBedroom, null);
         neighbourBedroom.setExits(neighbourLivingRoom, null, null, null);
         gunStore.setExits(outside, null, null, null);
-        car.setExits(null, mcBonalds, homelessShelter, outside);
+        car.setExits(null, airport, homelessShelter, outside);
         homelessShelter.setExits(car, null, null, null);
-        mcBonalds.setExits(null, alley, null, car);
-        alley.setExits(null, null, null, mcBonalds);
+        airport.setExits(null, alley, null, car);
+        alley.setExits(null, null, null, airport);
 
         // spawn player in bedroom
         this.currentRoom = bedroom;
 
         //test inv
-        this.inventory.push(new Item(0, 'Shotgun'));
+        this.inventory.push(new Item(0, 'Airplane ticket to Hawaii'));
       
 
         //test item in room
@@ -96,7 +96,7 @@ class Game {
     printWelcome() : void {
         this.out.println();
         this.out.println("Rise and shine!");
-        this.out.println("You have to kill everyone to win!");
+        this.out.println("Get to airport and leave to win!");
         this.out.println("Type 'help' for a list of commands you can use.");
         this.out.println();
         this.out.println("You are " + this.currentRoom.description);
@@ -152,7 +152,7 @@ class Game {
             this.out.println("Help what?");
             return false;
         }
-        this.out.println("Let me help you out, shitlord.");
+        this.out.println("Let me help you out.");
         this.out.println();
         this.out.println("Your command words are:");
         this.out.println("'go' you can use this to move about.");
@@ -160,6 +160,7 @@ class Game {
         this.out.println("'help', list all of your command words.");
         this.out.println("'look', regain your bearings.");
         this.out.println("'inventory', check your inventory.");
+        this.out.println("'leave', fly away");
         this.out.println("'hatroo'");
         return false;
     }
@@ -326,9 +327,10 @@ class Game {
             }
             return false;
         }
-   
+    
+}
         
 
     
-}
+
     

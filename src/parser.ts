@@ -80,6 +80,9 @@ class Parser {
             case "get" :
                 wantToQuit = this.game.pickUpItem(params);
                 break;
+            case "leave" :
+                 wantToQuit = this.game.quit(params);
+                 break;
                 
             default :
                 // print an error when command is not known
